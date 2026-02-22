@@ -53,3 +53,7 @@ output_rag.txt
 # OS Files
 .DS_Store
 Thumbs.db
+
+# Project Specific Development Folders
+dev-docs/
+exploration/

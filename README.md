@@ -28,3 +28,35 @@ This project was built using the following core technologies and libraries:
 - **Context7 (MCP)**: Model Context Protocol server used to fetch up-to-date market standards and architectural documentation.
 - **Obsidian / Excalidraw**: Used as the primary canvas for diagram creation and modification.
 - **Python 3**: The backend language powering the standalone skills.
+
+## Getting Started (Integrating into your Agent)
+
+Because ArchiDraw uses the standard `agentskills.io` architecture, integrating it into any modern AI Agent (like Cline, Cursor, or Aider) is straightforward:
+
+1. **Install Dependencies**:
+   Ensure you have Python 3 installed, then install the required unofficial NotebookLM client:
+   ```bash
+   pip install notebooklm-py
+   ```
+
+2. **Authenticate NotebookLM**:
+   Run the interactive login command so your agent can access your private notebooks:
+   ```bash
+   notebooklm login
+   ```
+   *(This will save the session cookies locally. This only needs to be done once per machine/expiration).*
+
+3. **Mount the Skills**:
+   Simply copy the `src/skills/` folder into your agent's workspace. Your AI Agent should be instructed to read the `SKILL.md` file inside each folder (`rag_references`, `research_context`, etc.) to understand **when** and **how** to execute the Python scripts.
+
+4. **Feeding the Private Context (RAG)**:
+   For architectural documentation, local patterns, or private company data that cannot be retrieved via public MCP (like Context7), you must feed your private NotebookLM instance:
+   - Go to [notebooklm.google.com](https://notebooklm.google.com).
+   - Create or open the notebook named `Diagram Agent Context` (or the name you configure).
+   - Upload your custom `.md`, `.pdf`, or text files. The `rag_references` skill will immediately be able to read and understand these new project-specific constraints.
+
+5. **Verify Connection**:
+   You can manually test if the environment is ready using the provided test scripts:
+   ```bash
+   python tools/setup/test_notebooklm.py
+   ```

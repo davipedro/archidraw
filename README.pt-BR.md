@@ -28,3 +28,35 @@ Este projeto foi construído utilizando as seguintes tecnologias ferramentas cen
 - **Context7 (MCP)**: Servidor de Model Context Protocol utilizado para buscar padrões de mercado e documentações arquiteturais atualizadas.
 - **Obsidian / Excalidraw**: Utilizado como tela (canvas) principal para criação e modificação fluida dos diagramas.
 - **Python 3**: A linguagem backend responsável por fornecer as habilidades (skills) independentes.
+
+## Como Usar (Integração no seu Agente)
+
+Como o ArchiDraw utiliza a arquitetura padrão `agentskills.io`, integrá-lo a qualquer Agente de IA moderno (como Cline, Cursor ou Aider) é super direto:
+
+1. **Instale as Dependências**:
+   Garanta que você tem o Python 3 instalado, e então instale o client não-oficial do NotebookLM:
+   ```bash
+   pip install notebooklm-py
+   ```
+
+2. **Autentique no NotebookLM**:
+   Rode o comando interativo de login para que o agente tenha acesso aos seus cadernos privados:
+   ```bash
+   notebooklm login
+   ```
+   *(Isso salvará os cookies de sessão localmente. Só precisa ser feito uma vez por máquina/expiração).*
+
+3. **Incorpore as Skills**:
+   Simplesmente copie a pasta `src/skills/` para o workspace do seu agente. O seu Agente de IA deve ser instruído a ler o arquivo `SKILL.md` dentro de cada pasta (`rag_references`, `research_context`, etc.) para entender **quando** e **como** executar os scripts Python.
+
+4. **Alimentando o Contexto Privado (RAG)**:
+   Para documentações arquiteturais, padrões locais ou dados privados da empresa que não existem publicamente via MCP (como Context7), você deve alimentar a sua instância do NotebookLM:
+   - Acesse [notebooklm.google.com](https://notebooklm.google.com).
+   - Crie ou abra o caderno chamado `Diagram Agent Context` (ou o nome que você configurar).
+   - Faça upload dos seus PDFs, `.md` ou arquivos de texto com as regras locais. A skill `rag_references` imediatamente passará a ler e entender essas restrições ao desenhar soluções.
+
+5. **Verifique a Conexão**:
+   Você pode testar manualmente se o seu ambiente está pronto rodando os scripts de testes providenciados:
+   ```bash
+   python tools/setup/test_notebooklm.py
+   ```

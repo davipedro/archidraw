@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+
+# Ambiente Virtual
+venv/
+.env
+.venv
+env.bak/
+venv.bak/
+
+# NotebookLM / Playwright
+~/.notebooklm/storage_state.json
+storage_state.json
+playwright-report/
+test-results/
+
+# Log Files (criado nos testes)
+output_rag.txt
+*.log
+
+# Obsidian Files (Opcional: dependendo se você quer versionar a configuração local do seu vault)
+# dev-docs/vault/diagram-agent/.obsidian/
+# dev-docs/vault/diagram-agent/.obsidian.vimrc
+
+# VS Code / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS Files
+.DS_Store
+Thumbs.db

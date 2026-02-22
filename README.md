@@ -50,10 +50,10 @@ Because ArchiDraw uses the standard `agentskills.io` architecture, integrating i
    Simply copy the `src/skills/` folder into your agent's workspace. Your AI Agent should be instructed to read the `SKILL.md` file inside each folder (`rag_references`, `research_context`, etc.) to understand **when** and **how** to execute the Python scripts.
 
 4. **Feeding the Private Context (RAG)**:
-   For architectural documentation, local patterns, or private company data that cannot be retrieved via public MCP (like Context7), you must feed your private NotebookLM instance:
-   - Go to [notebooklm.google.com](https://notebooklm.google.com).
-   - Create or open the notebook named `Diagram Agent Context` (or the name you configure).
-   - Upload your custom `.md`, `.pdf`, or text files. The `rag_references` skill will immediately be able to read and understand these new project-specific constraints.
+   This feature allows the agent to search and interact with a highly specific RAG containing only the information you want it to follow.
+   - A major advantage is that the context is already **pre-interpreted by NotebookLM's AI**. This drastically reduces the processing cost (tokens and reasoning time) for your primary agent.
+   - You can combine various references (architectural docs, internal patterns, code snippets) into a single notebook to provide the agent with a unified, aligned vision of what needs to be built.
+   - To add your sources, simply go to [notebooklm.google.com](https://notebooklm.google.com), open the notebook named `Diagram Agent Context` (or your configured name), and upload your files. The `rag_references` skill will instantly leverage this pre-processed knowledge.
 
 5. **Verify Connection**:
    You can manually test if the environment is ready using the provided test scripts:

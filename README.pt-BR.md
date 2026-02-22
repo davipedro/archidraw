@@ -50,10 +50,10 @@ Como o ArchiDraw utiliza a arquitetura padrão `agentskills.io`, integrá-lo a q
    Simplesmente copie a pasta `src/skills/` para o workspace do seu agente. O seu Agente de IA deve ser instruído a ler o arquivo `SKILL.md` dentro de cada pasta (`rag_references`, `research_context`, etc.) para entender **quando** e **como** executar os scripts Python.
 
 4. **Alimentando o Contexto Privado (RAG)**:
-   Para documentações arquiteturais, padrões locais ou dados privados da empresa que não existem publicamente via MCP (como Context7), você deve alimentar a sua instância do NotebookLM:
-   - Acesse [notebooklm.google.com](https://notebooklm.google.com).
-   - Crie ou abra o caderno chamado `Diagram Agent Context` (ou o nome que você configurar).
-   - Faça upload dos seus PDFs, `.md` ou arquivos de texto com as regras locais. A skill `rag_references` imediatamente passará a ler e entender essas restrições ao desenhar soluções.
+   Esta funcionalidade serve para o agente buscar e interagir com um RAG focado nas informações exatas que você deseja que ele siga.
+   - Uma grande vantagem é que o contexto retornado já vem **interpretado pela IA do NotebookLM**. Isso reduz massivamente o custo de processamento (em tokens e tempo lógico) do seu agente principal ao fazer a consulta.
+   - É possível combinar diversas referências (documentações, padrões internos, código) em um único caderno para trazer ao agente uma visão perfeitamente alinhada ao que se deseja construir.
+   - Para adicionar fontes, basta acessar [notebooklm.google.com](https://notebooklm.google.com), abrir o caderno `Diagram Agent Context` (ou o nome configurado), e fazer o upload dos seus arquivos. A skill `rag_references` passará a usar esse conhecimento previamente mastigado imediatamente.
 
 5. **Verifique a Conexão**:
    Você pode testar manualmente se o seu ambiente está pronto rodando os scripts de testes providenciados:
